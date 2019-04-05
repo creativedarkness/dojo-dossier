@@ -1,0 +1,14 @@
+.DossierContainer {
+    width: 700px;
+}
+.newTabForm {
+    text-align: right;
+}
+.newTabTitle {
+    width: 150px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+.addTabButton {
+    width: 150px;
+}
