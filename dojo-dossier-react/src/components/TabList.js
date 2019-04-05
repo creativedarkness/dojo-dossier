@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Tab from './Tab';
+import {setPersonalTab} from '../redux';
 
 // this component is responsible for displaying the tab items. 
 // when we click any of the tab items, we will show the information 
@@ -18,12 +20,13 @@ class TabList extends Component {
     }
 
     onClickTabItem = (tab) => {
+        // console.log(tab);
         this.setState({ activeTab: tab });
+        this.props.setPersonalTab(tab)
     }
-    render() {
-        // console.log("TabList",this.props);
-        const { onClickTabItem, props: { children }, state: { activeTab } } = this;
 
+    render() {
+        const { onClickTabItem, props: { children }, state: { activeTab } } = this;
         return (
             <div>
                 <nav>
@@ -53,4 +56,11 @@ class TabList extends Component {
     }
 }
 
-export default TabList
+const mapDispatchToProps = (dispatch) => ({
+    setPersonalTab: (title) => dispatch(setPersonalTab(title)),
+})
+
+export default  connect(
+    null,
+    mapDispatchToProps,
+)(TabList)

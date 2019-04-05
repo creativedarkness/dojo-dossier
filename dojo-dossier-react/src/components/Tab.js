@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {setPersonalTab} from '../redux';
+
 
 //This component is responsible for displaying title onthe tabs,
 //add the calss if the tab is active
@@ -19,35 +18,26 @@ class Tab extends Component {
         const { label, onClick } = this.props;
         onClick(label);
     }
-    
+
     render() {
-        const { onClick, props: {activeTab, label}} = this;
-        
+        // console.log(this.state);
+        const { onClick, props: { activeTab, label } } = this;
+
         let className = 'nav-item nav-link';
-        
+
         if (activeTab === label) {
             className += ' active';
-            // console.log("activeTab",activeTab);
-            // this.props.grabTabTitle(label);
         }
 
         return (
             <a
-            className={className}
-            onClick={onClick}
+                className={className}
+                onClick={onClick}
             >
-            {label}
+                {label}
             </a>
         );
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    grabTabTitle: (person) => dispatch(setPersonalTab(person)),
-})
-
-
-export default connect(
-    null,
-    mapDispatchToProps
-)(Tab)
+export default Tab
