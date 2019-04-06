@@ -19,10 +19,10 @@ class TabList extends Component {
         };
     }
 
-    onClickTabItem = (tab) => {
-        // console.log(tab);
+    onClickTabItem = (tab, id) => {
+        // console.log("clcik tab",id);
         this.setState({ activeTab: tab });
-        this.props.setPersonalTab(tab)
+        this.props.setPersonalTab(tab, id)
     }
 
     render() {
@@ -32,13 +32,15 @@ class TabList extends Component {
                 <nav>
                     <div className="nav nav-pills">
                         {children.map((child) => {
-                            const { label } = child.props;
+                            // console.log("child",child);
+                            const { label, id } = child.props;
 
                             return (
                                 <Tab
                                     activeTab={activeTab}
                                     key={label}
                                     label={label}
+                                    id={id}
                                     onClick={onClickTabItem}
                                 />
                             );
@@ -57,7 +59,7 @@ class TabList extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    setPersonalTab: (title) => dispatch(setPersonalTab(title)),
+    setPersonalTab: (title, id) => dispatch(setPersonalTab(title, id)),
 })
 
 export default  connect(

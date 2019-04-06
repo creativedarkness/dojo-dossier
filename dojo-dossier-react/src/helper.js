@@ -6,4 +6,13 @@ export const retreiveDossiersPromise = () => {
     return axios.get(`http://5ca799328e58df001460368c.mockapi.io/dossiers`);
 }
 
-// export const updateDossiersPromise ()
+// export const addItemToDossierById = (id) => {
+//     return (
+//         axios
+//         .get(`http://5ca799328e58df001460368c.mockapi.io/dossiers/W${id}`)
+//         .then ((response) => {
+//             console.log(response);
+//             axios.put(`http://5ca799328e58df001460368c.mockapi.io/dossiers/${id}`)
+//         })
+// )
+// }
